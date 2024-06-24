@@ -4,23 +4,22 @@ const tweetBtn = document.querySelector("#tweet-btn")
 const tweetInput = document.querySelector("#tweet-input")
 
 tweetBtn.addEventListener("click", () => {
-    console.log(tweetInput.value)
-    tweetInput.value = ''
+	console.log(tweetInput.value)
+	tweetInput.value = ""
 })
 
 document.addEventListener("click", (e) => {
-    if (e.target.dataset.like) {
-        console.log(e.target.dataset.like)}
+	if (e.target.dataset.like) {
+		console.log(e.target.dataset.like)
+	}
 })
 
-function handleLikeClick() {
-    
-}
+function handleLikeClick() {}
 
 function getFeedHTML() {
-    let feedHTML = ''
-    tweetsData.forEach((tweet) => {
-        feedHTML += `
+	let feedHTML = ""
+	tweetsData.forEach((tweet) => {
+		feedHTML += `
                 <div class="tweet">
                     <div class="tweet-inner">
                         <img src=${tweet.profilePic} class="profile-pic">
@@ -28,13 +27,12 @@ function getFeedHTML() {
                             <p class="handle">${tweet.handle}</p>
                             <p class="tweet-text">${tweet.tweetText}</p>
                             <div class="tweet-details">
-                                <span class="tweet-detail">
-                                    <i class="fa-regular fa-comment-dots"
-                                    data-reply="${tweet.uuid}></i>
-                                    ${tweet.replies.length}
+                                 <span class="tweet-detail">
+                                    <i class="fa-regular fa-comment-dots" data-replies="${tweet.uuid}"></i>
+                                    ${tweet.likes}
                                 </span>
                                 <span class="tweet-detail">
-                                    <i class="fa-regular fa-heart" data-likes="${tweet.uuid}"></i>
+                                    <i class="fa-regular fa-heart" data-like="${tweet.uuid}"></i>
                                     ${tweet.likes}
                                 </span>
                                 <span class="tweet-detail">
@@ -45,13 +43,12 @@ function getFeedHTML() {
                         </div>            
                     </div>
                 </div>`
-    })
-    return feedHTML
+	})
+	return feedHTML
 }
 
 function renderFeed() {
-    document.querySelector("#feed").innerHTML = getFeedHTML()
+	document.querySelector("#feed").innerHTML = getFeedHTML()
 }
 
 renderFeed()
-
